@@ -3,6 +3,7 @@ package com.liljavagame.main;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.Serializable;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable, Serializable {
 
@@ -13,8 +14,19 @@ public class Game extends Canvas implements Runnable, Serializable {
     private Thread thread;
     private boolean running = false;
 
+    private Random r;
+    private Handler handler;
+
     public Game(){
         new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
+
+        handler = new Handler();
+        r = new Random();
+
+        for (int i = 0; i < 50; i++){
+            handler.addObject(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Player));
+        }
+
     }
 
     public synchronized void start() {
@@ -61,20 +73,25 @@ public class Game extends Canvas implements Runnable, Serializable {
     }
 
     private void tick(){
-
+        handler.tick();
     }
 
     private void render() {
-        BufferStrategy bs = this.getBufferStrategy();
+        BufferStrategy bs = this.getBufferStrategy(); // Since this will be null by default, the following is how we
+        // will want to actually create our buffer strategy
         if(bs == null){
-            this.createBufferStrategy(3);
+            this.createBufferStrategy(3); // This means along with the current buffer, there will be two additional
+            // buffers being loaded at any time.
             return;
         }
 
-        Graphics g = bs.getDrawGraphics();
+        Graphics g = bs.getDrawGraphics(); // Anything after this line and before disposal of buffer strategy(g
+        // .dispose) is where we can draw graphics, then bs.show will "show" them
 
         g.setColor(Color.blue);
         g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        handler.render(g);
 
         g.dispose();;
         bs.show();
