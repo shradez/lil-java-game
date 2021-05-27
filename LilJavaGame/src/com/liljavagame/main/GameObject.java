@@ -8,13 +8,14 @@ public abstract class GameObject {
     protected ID id;
     protected int velX, velY;
 
-    public GameObject(int x, int y, ID id){
+    public GameObject(int x, int y, ID id) {
         this.x = x;
         this.y = y;
         this.id = id;
     }
 
     public abstract void tick();
+
     public abstract void render(Graphics g);
 
     // Getters and Setters
