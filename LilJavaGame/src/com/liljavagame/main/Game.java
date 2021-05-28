@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
     private Random r;
     private Handler handler;
+    private HUD hud;
 
     public Game() {
         handler = new Handler();
@@ -23,14 +24,14 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 
+        hud = new HUD();
+
 
         r = new Random();
 
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));// Adds Player object to center of
         // screen
-
-        handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 - 32, ID.Player2)); // Adds Player 2 object a bit to
-        // the right
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy));
 
 
     }
@@ -51,6 +52,7 @@ public class Game extends Canvas implements Runnable, Serializable {
     }
 
     public void run() {
+        this.requestFocus(); // This ensures you won't need to click on screen to initialize keyboard control
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -80,6 +82,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render() {
@@ -99,9 +102,19 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         handler.render(g);
 
+        hud.render(g);
+
         g.dispose();
-        ;
         bs.show();
+    }
+
+    public static int clamp(int var, int min, int max) {
+        if (var >= max)
+            return var = max;
+        else if (var <= min)
+            return var = min;
+        else
+            return var;
     }
 
     public static void main(String args[]) {

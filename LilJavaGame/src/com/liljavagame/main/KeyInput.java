@@ -23,17 +23,10 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_S) tempObject.setVelY(5); // Down when pressing S
                 if (key == KeyEvent.VK_D) tempObject.setVelX(5); // Right when pressing D
                 if (key == KeyEvent.VK_A) tempObject.setVelX(-5); // Left when pressing A
-
             }
-            if (tempObject.getId() == ID.Player2) {
-                // key events for Player 2
-                if (key == KeyEvent.VK_UP) tempObject.setVelY(-5); // Moves Player 2 up when pressing W
-                if (key == KeyEvent.VK_DOWN) tempObject.setVelY(5); // Down when pressing S
-                if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(5); // Right when pressing D
-                if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-5); // Left when pressing A
-            }
-
         }
+
+        if (key == KeyEvent.VK_ESCAPE) System.exit(1); // Ends game when you hit escape
     }
 
     public void keyReleased(KeyEvent e) {
@@ -48,16 +41,7 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_S) tempObject.setVelY(0);
                 if (key == KeyEvent.VK_D) tempObject.setVelX(0);
                 if (key == KeyEvent.VK_A) tempObject.setVelX(0);
-
             }
-            if (tempObject.getId() == ID.Player2) {
-                // key events for Player 2
-                if (key == KeyEvent.VK_UP) tempObject.setVelY(0); // Stops Player 2 movement when key is released
-                if (key == KeyEvent.VK_DOWN) tempObject.setVelY(0);
-                if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(0);
-                if (key == KeyEvent.VK_LEFT) tempObject.setVelX(0);
-            }
-
         }
     }
 }
