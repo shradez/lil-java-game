@@ -17,6 +17,7 @@ public class Game extends Canvas implements Runnable, Serializable {
     private Random r;
     private Handler handler;
     private HUD hud;
+    private Spawn spawner;
 
     public Game() {
         handler = new Handler();
@@ -25,16 +26,12 @@ public class Game extends Canvas implements Runnable, Serializable {
         new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 
         hud = new HUD();
-
-
+        spawner = new Spawn(handler, hud);
         r = new Random();
 
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler));// Adds Player object to center of
         // screen
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-
+        handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
 
 
 
@@ -87,6 +84,7 @@ public class Game extends Canvas implements Runnable, Serializable {
     private void tick() {
         handler.tick();
         hud.tick();
+        spawner.tick();
     }
 
     private void render() {
