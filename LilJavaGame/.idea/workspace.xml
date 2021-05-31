@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ab24cfb-574d-4e7e-8dbd-adbfcbccf77e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/liljavagame/main/FastEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/liljavagame/main/Spawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/liljavagame/main/SmartEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/BasicEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/BasicEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/FastEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/FastEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/HUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/KeyInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/KeyInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/Spawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/Spawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/liljavagame/main/Trail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liljavagame/main/Trail.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

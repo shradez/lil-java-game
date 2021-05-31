@@ -4,11 +4,11 @@ import java.awt.*;
 
 public abstract class GameObject {
 
-    protected int x, y;
+    protected float x, y;
     protected ID id;
-    protected int velX, velY;
+    protected float velX, velY;
 
-    public GameObject(int x, int y, ID id) {
+    public GameObject(float x, float y, ID id) {
         this.x = x;
         this.y = y;
         this.id = id;
@@ -21,7 +21,7 @@ public abstract class GameObject {
     public abstract Rectangle getBounds();
 
     // Getters and Setters
-    public int getX() {
+    public float getX() {
         return x;
     }
 
@@ -29,7 +29,7 @@ public abstract class GameObject {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
@@ -45,7 +45,7 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    public int getVelX() {
+    public float getVelX() {
         return velX;
     }
 
@@ -53,7 +53,7 @@ public abstract class GameObject {
         this.velX = velX;
     }
 
-    public int getVelY() {
+    public float getVelY() {
         return velY;
     }
 

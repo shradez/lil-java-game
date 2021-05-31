@@ -15,7 +15,7 @@ public class Player extends GameObject {
 
   @Override
   public Rectangle getBounds() {
-    return new Rectangle(x, y, 32, 32);
+    return new Rectangle((int)x, (int)y, 32, 32);
   }
 
   public void tick() {
@@ -24,12 +24,12 @@ public class Player extends GameObject {
 
     x =
         Game.clamp(
-            x, 0, Game.WIDTH - 50); // Stops player movement if reaches left or right of screen
+                x, 0, Game.WIDTH - 50); // Stops player movement if reaches left or right of screen
     y =
         Game.clamp(
-            y, 0, Game.HEIGHT - 70); // Stops player movement if reaches top or bottom of screen
+                y, 0, Game.HEIGHT - 70); // Stops player movement if reaches top or bottom of screen
 
-    handler.addObject(new Trail(x, y, ID.Trail, Color.white, 32, 32, 0.05f, handler));
+    handler.addObject(new Trail((int)x, (int)y, ID.Trail, Color.white, 32, 32, 0.05f, handler));
 
     collision();
   }
@@ -39,7 +39,7 @@ public class Player extends GameObject {
 
       GameObject tempObject = handler.object.get(i);
 
-      if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy) { // tempobject is now basic enemy
+      if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy || tempObject.getId() == ID.SmartEnemy) { // tempobject is now enemy
         if (getBounds().intersects(tempObject.getBounds())) {
           // collision code
           HUD.HEALTH -= 2;
@@ -57,6 +57,6 @@ public class Player extends GameObject {
     // g2d.draw(getBounds()); // This will show the outline for our collision detection
 
     g.setColor(Color.white);
-    g.fillRect(x, y, 32, 32);
+    g.fillRect((int)x, (int)y, 32, 32);
   }
 }
