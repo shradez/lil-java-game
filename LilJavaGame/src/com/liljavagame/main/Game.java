@@ -23,26 +23,31 @@ public class Game extends Canvas implements Runnable, Serializable {
     public enum STATE {
         Menu,
         Help,
-        Game
+        Game,
+        End
     };
 
-    public STATE gameState = STATE.Menu;
+    public static STATE gameState = STATE.Menu;
 
     public Game() {
         handler = new Handler();
-        menu = new Menu(this, handler);
+        hud = new HUD();
+        menu = new Menu(this, handler, hud);
         this.addKeyListener(new KeyInput(handler));
         this.addMouseListener(menu);
 
         new Window(WIDTH, HEIGHT, "Let's Build a Game", this);
 
-        hud = new HUD();
         spawner = new Spawn(handler, hud);
         r = new Random();
 
         if (gameState == STATE.Game) {
             handler.addObject(new Player(WIDTH / 2 - 32,HEIGHT / 2 - 32, ID.Player, handler)); // Adds Player object to center of screen
             handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.BasicEnemy, handler));
+        } else {
+            for (int i = 0; i < 10; i++){
+                handler.addObject(new MenuParticle(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.MenuParticle, handler));
+            }
         }
 
     }
@@ -63,8 +68,7 @@ public class Game extends Canvas implements Runnable, Serializable {
     }
 
     public void run() {
-        this
-                .requestFocus(); // This ensures you won't need to click on screen to initialize keyboard
+        this.requestFocus(); // This ensures you won't need to click on screen to initialize keyboard
         // control
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
@@ -97,7 +101,18 @@ public class Game extends Canvas implements Runnable, Serializable {
         if (gameState == STATE.Game) {
             hud.tick();
             spawner.tick();
-        } else if (gameState == STATE.Menu){
+
+            if (HUD.HEALTH <= 0){
+                HUD.HEALTH = 100;
+
+                gameState = STATE.End;
+                handler.clearEnemys();
+                for (int i = 0; i < 10; i++){
+                    handler.addObject(new MenuParticle(r.nextInt(WIDTH),r.nextInt(HEIGHT), ID.MenuParticle, handler));
+                }
+            }
+
+        } else if (gameState == STATE.Menu || gameState == STATE.End){
             menu.tick();
         }
 
@@ -125,7 +140,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         if (gameState == STATE.Game) {
             hud.render(g);
-        } else if (gameState == STATE.Menu || gameState == STATE.Help){
+        } else if (gameState == STATE.Menu || gameState == STATE.Help || gameState == STATE.End){
             menu.render(g);
         }
 
