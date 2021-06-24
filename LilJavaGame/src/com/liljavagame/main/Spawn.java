@@ -36,7 +36,7 @@ public class Spawn {
                 handler.addObject(new MenuParticle(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.FastEnemy, handler));
             } else if (hud.getLevel() == 10) {
                 handler.clearEnemys();
-                handler.addObject(new EnemyBoss((Game.WIDTH / 2) - 48, -120, ID.EnemyBoss, handler));
+                handler.addObject(new EnemyBoss((Game.WIDTH / 2) - 48, -160, ID.EnemyBoss, handler));
             }
         }
     }

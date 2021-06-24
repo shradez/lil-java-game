@@ -20,7 +20,7 @@ public class EnemyBoss extends GameObject {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, 96, 96);
+        return new Rectangle((int) x, (int) y, 120, 105);
     }
 
     public void tick() {
